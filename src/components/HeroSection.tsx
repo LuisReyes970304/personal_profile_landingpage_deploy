@@ -9,6 +9,8 @@ import { gsap } from "gsap";
 export function HeroSection() {
   const headingRef = useRef<HTMLSpanElement>(null);
   const accentRef = useRef<HTMLSpanElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const playIntro = () => {
@@ -41,14 +43,35 @@ export function HeroSection() {
     return () => window.removeEventListener("hero-intro:replay", playIntro);
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const glow = glowRef.current;
+    if (!section || !glow) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const moveX = gsap.quickTo(glow, "x", { duration: 0.9, ease: "power3.out" });
+    const moveY = gsap.quickTo(glow, "y", { duration: 0.9, ease: "power3.out" });
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      moveX(event.clientX - rect.left - rect.width / 2);
+      moveY(event.clientY - rect.top - rect.height / 2);
+    };
+
+    section.addEventListener("mousemove", handleMouseMove);
+    return () => section.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="inicio"
       className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end overflow-hidden px-5 pb-10 pt-32 md:px-10 md:pb-14"
     >
       <div
+        ref={glowRef}
         aria-hidden="true"
-        className="pointer-events-none absolute right-[-12%] top-28 h-80 w-80 rounded-full bg-lime/10 blur-[100px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime/10 blur-[100px]"
       />
 
       <p className="mb-12 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/55 md:mb-16">
