@@ -1,15 +1,26 @@
+"use client";
+
 import Image from "next/image";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { skills } from "@/lib/profile";
 
 export function AboutSection() {
+  const ref = useScrollReveal<HTMLDivElement>({ targets: "[data-reveal]" });
+
   return (
     <section
       id="sobre-mi"
       aria-labelledby="sobre-mi-title"
       className="relative px-5 pt-24 md:px-10 md:pt-32"
     >
-      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
-        <div className="relative min-h-[32rem] overflow-hidden rounded-[2rem]">
+      <div
+        ref={ref}
+        className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24"
+      >
+        <div
+          data-reveal
+          className="relative min-h-[32rem] overflow-hidden rounded-[2rem]"
+        >
           <Image
             src="https://images.unsplash.com/photo-1765539160785-e7953620488f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1080"
             alt="Desarrollador trabajando frente a un ordenador en un estudio con iluminación ambiental"
@@ -27,7 +38,7 @@ export function AboutSection() {
         </div>
 
         <div className="flex flex-col justify-between">
-          <div>
+          <div data-reveal>
             <p className="mb-7 text-xs font-bold uppercase tracking-[0.2em] text-lime">
               02 — Sobre mí
             </p>
@@ -50,7 +61,11 @@ export function AboutSection() {
             aria-label="Habilidades"
           >
             {skills.map((skill) => (
-              <li key={skill} className="border-b border-white/15 py-4 text-sm text-white/70">
+              <li
+                data-reveal
+                key={skill}
+                className="border-b border-white/15 py-4 text-sm text-white/70"
+              >
                 {skill}
               </li>
             ))}

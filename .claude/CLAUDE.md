@@ -10,7 +10,7 @@ Personal profile landing page for Luis Reyes, full-stack developer. Section comp
 ## Tech Stack
 - Framework: Next.js 16 (App Router) + React 19 + TypeScript (strict)
 - Styling: Tailwind CSS v4
-- Animation: `gsap`, wired in two places — `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event) and `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin to drive a fixed progress bar. Both respect `prefers-reduced-motion`; follow that pattern for any new gsap usage.
+- Animation: `gsap`. `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event); `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin with `scrub` to drive a fixed progress bar tied directly to scroll position; `ProjectsSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx` and `Footer.tsx` use the `hooks/useScrollReveal.ts` hook (same scrubbed-`ScrollTrigger` approach) to fade an element in as it nears and back out once it's scrolled past — mark an element `data-reveal` to pick it up. All of it respects `prefers-reduced-motion`; follow that pattern for any new gsap usage.
 - Linting: ESLint 9 flat config (`eslint.config.mjs`, extends `eslint-config-next` core-web-vitals + typescript)
 - No test framework is set up yet.
 
@@ -44,7 +44,7 @@ src/
 ├── components/         # Reusable React components
 │   └── ui/             # Atomic elements (Button, Input, Badge, Card...)
 ├── lib/                # Utilities, helpers, API integrations, constants
-└── hooks/              # Reusable custom React hooks (not created yet)
+└── hooks/              # Reusable custom React hooks (e.g. useScrollReveal.ts)
 ```
 
 - `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. `Header` and `Footer` come from the root layout, alongside `ui/ScrollProgressBar.tsx` (also rendered in the root layout, fixed above the header).

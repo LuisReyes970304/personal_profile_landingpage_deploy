@@ -1,16 +1,24 @@
+"use client";
+
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { Tag } from "@/components/ui/Tag";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { projects } from "@/lib/profile";
 
 export function ProjectsSection() {
+  const ref = useScrollReveal<HTMLDivElement>({ targets: "[data-reveal]" });
+
   return (
     <section
       id="proyectos"
       aria-labelledby="proyectos-title"
       className="bg-paper px-5 py-24 text-coal md:px-10 md:py-32"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-16 flex flex-col justify-between gap-7 md:mb-24 md:flex-row md:items-end">
+      <div ref={ref} className="mx-auto max-w-7xl">
+        <div
+          data-reveal
+          className="mb-16 flex flex-col justify-between gap-7 md:mb-24 md:flex-row md:items-end"
+        >
           <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-black/45">
               01 — Trabajo seleccionado
@@ -32,6 +40,7 @@ export function ProjectsSection() {
         <div className="border-t border-black/20">
           {projects.map((project) => (
             <article
+              data-reveal
               key={project.title}
               className="group grid gap-7 border-b border-black/20 py-9 md:grid-cols-[0.12fr_0.75fr_0.95fr_0.4fr] md:items-center md:py-12"
             >
