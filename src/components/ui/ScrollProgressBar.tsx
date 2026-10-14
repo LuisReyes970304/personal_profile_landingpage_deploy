@@ -34,11 +34,11 @@ export function ScrollProgressBar() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-white/5 pointer-events-none"
+      className="fixed inset-x-0 top-0 z-60 h-0.75 bg-white/5 pointer-events-none"
     >
       <div
         ref={barRef}
-        className="h-full w-full origin-left bg-gradient-to-r from-lime via-[#9aff43] to-white shadow-[0_0_12px_var(--color-lime)]"
+        className="h-full w-full origin-left bg-linear-to-r from-lime via-[#9aff43] to-white shadow-[0_0_12px_var(--color-lime)]"
         style={{ transform: "scaleX(0)" }}
       />
     </div>

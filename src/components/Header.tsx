@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
+import { MobileMenu } from "@/components/MobileMenu";
 import { profile } from "@/lib/profile";
 
 export function Header() {
@@ -34,14 +35,16 @@ export function Header() {
             Sobre mi
           </Link>
       
-          <a
-            href="#"
+          <Link
             className="flex items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:border-lime hover:bg-lime hover:text-ink"
+            href="#contact"
           >
             Hablemos
             <ArrowIcon diagonal />
-          </a>
+          </Link>
         </nav>
+
+        <MobileMenu />
       </div>
     </header>
   );

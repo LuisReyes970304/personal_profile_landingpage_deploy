@@ -5,12 +5,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Personal Landing Page
 
 ## Overview
-Personal profile landing page for Luis Reyes, full-stack developer. Section components in `src/components/`, content (profile, projects, skills) in `src/lib/profile.ts`. Copy is in Spanish (`<html lang="es">`). Placeholder content: the contact email in `profile.ts`, the sample projects, and the about-me text in `AboutSection.tsx` (inherited from the prototype). `gsap` (with `ScrollToPlugin`) is imported in `HeroSection.tsx` but not yet wired to any actual animation — treat it as unfinished prototype wiring, not a pattern to copy.
+Personal profile landing page for Luis Reyes, full-stack developer. Section components in `src/components/`, content (profile, projects, skills) in `src/lib/profile.ts`. Copy is in Spanish (`<html lang="es">`). Placeholder content: the contact email in `profile.ts`, the sample projects, and the about-me text in `AboutSection.tsx` (inherited from the prototype).
 
 ## Tech Stack
 - Framework: Next.js 16 (App Router) + React 19 + TypeScript (strict)
 - Styling: Tailwind CSS v4
-- Animation: `gsap` (currently only imported in `HeroSection.tsx`, see note above)
+- Animation: `gsap`, wired in two places — `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event) and `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin to drive a fixed progress bar. Both respect `prefers-reduced-motion`; follow that pattern for any new gsap usage.
 - Linting: ESLint 9 flat config (`eslint.config.mjs`, extends `eslint-config-next` core-web-vitals + typescript)
 - No test framework is set up yet.
 
@@ -47,9 +47,9 @@ src/
 └── hooks/              # Reusable custom React hooks (not created yet)
 ```
 
-- `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. `Header` and `Footer` come from the root layout.
-- In-page navigation uses hash links (`#inicio`, `#proyectos`, `#sobre-mi`) that must match section `id`s. If you rename or add a section, update the links in `Header.tsx` and `HeroSection.tsx`.
-- The header is `fixed` and its nav is desktop-only (`hidden md:flex`); there is no mobile menu yet.
+- `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. `Header` and `Footer` come from the root layout, alongside `ui/ScrollProgressBar.tsx` (also rendered in the root layout, fixed above the header).
+- In-page navigation uses hash links (`#inicio`, `#proyectos`, `#sobre-mi`) that must match section `id`s. If you rename or add a section, update the links in `Header.tsx`, `MobileMenu.tsx`, and `HeroSection.tsx`.
+- The header is `fixed`; its own nav is desktop-only (`hidden md:flex`). Below `md`, `Header.tsx` renders `MobileMenu.tsx` (`'use client'`, toggled open/close state), which duplicates the same links and uses `ui/BurgerIcon.tsx` for the toggle icon. Keep both navs in sync when changing links.
 Project skills in `.claude/skills/`:
 - `app-style`: visual style guide. Use for any UI, Tailwind or CSS change.
 - `new-section`: workflow for adding a section or a route.

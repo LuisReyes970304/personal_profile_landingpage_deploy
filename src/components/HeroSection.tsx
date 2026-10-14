@@ -44,7 +44,7 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-5 pb-10 pt-32 md:px-10 md:pb-14"
+      className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end overflow-hidden px-5 pb-10 pt-32 md:px-10 md:pb-14"
     >
       <div
         aria-hidden="true"
