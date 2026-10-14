@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Manrope } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { profile } from "@/lib/profile";
 import "./globals.css";
 
@@ -19,11 +20,14 @@ const dmSerifDisplay = DM_Serif_Display({
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
-  description:
-    "Desarrollo productos web rápidos y memorables donde el diseño, la tecnología y el propósito trabajan juntos.",
+  description: profile.bio,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="es"
@@ -31,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} ${dmSerifDisplay.variable} antialiased`}
     >
       <body className="min-h-screen overflow-x-hidden bg-ink font-sans text-cream">
+        <ScrollProgressBar />
         <Header />
         {children}
         <Footer />
