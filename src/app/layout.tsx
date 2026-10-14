@@ -20,7 +20,8 @@ const dmSerifDisplay = DM_Serif_Display({
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
-  description: profile.bio,
+  description:
+    "Desarrollo productos web rápidos y memorables donde el diseño, la tecnología y el propósito trabajan juntos.",
 };
 
 export default function RootLayout({
