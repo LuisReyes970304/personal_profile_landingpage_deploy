@@ -9,6 +9,8 @@ export type Project = {
   tags: string[];
   /** Tailwind gradient stops for the decorative pill. */
   tone: string;
+  /** Link to the project's repository or live demo, if available. */
+  repoUrl: string;
 };
 
 export const profile = {
@@ -28,29 +30,32 @@ export const projects: Project[] = [
   {
     number: "01",
     title: "CRUD FastApi",
-    category: "Backend· Novedad",
+    category: "Backend · Novedad",
     description:
-      "La sencilles de python en cada endpoint.",
+      "API REST modular construida con FastAPI, pensada como base reutilizable para servicios backend: operaciones CRUD, validación con Pydantic y persistencia en PostgreSQL.",
     tags: ["Python", "Postgres", "API"],
     tone: "from-[#c7ff43] to-[#76d8ff]",
+    repoUrl: "https://github.com/Callcenter-Application/cc_backend_v1_fastapi.git",
   },
   {
     number: "02",
-    title: "Arco Finance",
-    category: "Producto · Fintech",
+    title: "Aplicación Callcenter Frontend",
+    category: "Producto · BPO",
     description:
-      "Plataforma financiera que transforma datos densos en decisiones simples, rápidas y humanas.",
-    tags: ["TypeScript", "Design System", "API"],
+      "Aplicación web para la gestión de campañas de call center, con panel de administración y diseño responsivo.",
+    tags: ["TypeScript", "Next.js", "TailwindCSS"],
     tone: "from-[#ff7a59] to-[#ffcf48]",
+    repoUrl: "https://github.com/Callcenter-Application/cc_frontend_v2_next.git",
   },
   {
     number: "03",
-    title: "Lumen AI",
-    category: "Experiencia · Inteligencia artificial",
+    title: "Recorder Screen",
+    category: "Creación · digital",
     description:
-      "Un espacio de trabajo colaborativo diseñado para incorporar IA sin perder el control creativo.",
+      "Grabador de pantalla hecho con JavaScript Vanilla. Permite al usuario grabar su pantalla y descargar el video resultante en formato WebM.",
     tags: ["Next.js", "AI", "WebGL"],
     tone: "from-[#9a7cff] to-[#ff82c8]",
+    repoUrl: "https://github.com/LuisReyes970304/recorder_screen.git",
   },
 ];
 

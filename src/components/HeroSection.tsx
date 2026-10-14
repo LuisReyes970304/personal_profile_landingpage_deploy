@@ -49,8 +49,8 @@ export function HeroSection() {
     if (!section || !glow) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const moveX = gsap.quickTo(glow, "x", { duration: 0.9, ease: "power3.out" });
-    const moveY = gsap.quickTo(glow, "y", { duration: 0.9, ease: "power3.out" });
+    const moveX = gsap.quickTo(glow, "x", { duration: 0.6, ease: "power3.out" });
+    const moveY = gsap.quickTo(glow, "y", { duration: 0.6, ease: "power3.out" });
 
     const handleMouseMove = (event: MouseEvent) => {
       const rect = section.getBoundingClientRect();

@@ -48,7 +48,7 @@ src/
 ```
 
 - `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. `Header` and `Footer` come from the root layout, alongside `ui/ScrollProgressBar.tsx` (also rendered in the root layout, fixed above the header).
-- In-page navigation uses hash links (`#inicio`, `#proyectos`, `#sobre-mi`) that must match section `id`s. If you rename or add a section, update the links in `Header.tsx`, `MobileMenu.tsx`, and `HeroSection.tsx`.
+- In-page navigation uses hash links (`#inicio`, `#proyectos`, `#sobre-mi`, `#contact`) that must match target `id`s. Three resolve to their own section (`HeroSection.tsx`, `ProjectsSection.tsx`, `AboutSection.tsx`); `#contact` resolves to `id="contact"` on `Footer.tsx` — `ContactSection.tsx` itself has no matching `id`, only an `aria-label`. If you rename or add a section, update the links in `Header.tsx`, `MobileMenu.tsx`, and `HeroSection.tsx`.
 - The header is `fixed`; its own nav is desktop-only (`hidden md:flex`). Below `md`, `Header.tsx` renders `MobileMenu.tsx` (`'use client'`, toggled open/close state), which duplicates the same links and uses `ui/BurgerIcon.tsx` for the toggle icon. Keep both navs in sync when changing links.
 Project skills in `.claude/skills/`:
 - `app-style`: visual style guide. Use for any UI, Tailwind or CSS change.

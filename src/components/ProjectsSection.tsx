@@ -21,7 +21,7 @@ export function ProjectsSection() {
         >
           <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-black/45">
-              01 — Trabajo seleccionado
+              Trabajo seleccionado
             </p>
             <h2
               id="proyectos-title"
@@ -68,16 +68,29 @@ export function ProjectsSection() {
                 </ul>
               </div>
 
-              <div
-                aria-hidden="true"
-                className="flex items-center justify-between md:justify-end md:gap-5"
-              >
+              <div className="flex items-center justify-between md:justify-end md:gap-5">
                 <div
+                  aria-hidden="true"
                   className={`h-14 w-24 rounded-full bg-linear-to-r ${project.tone} opacity-80 blur-[1px] transition-all duration-500 group-hover:w-28 group-hover:opacity-100`}
                 />
-                <span className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-all group-hover:rotate-45 group-hover:bg-black group-hover:text-white">
-                  <ArrowIcon diagonal />
-                </span>
+                {project.repoUrl ? (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Ver repositorio de ${project.title}`}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-all hover:rotate-45 hover:bg-black hover:text-white group-hover:rotate-45 group-hover:bg-black group-hover:text-white"
+                  >
+                    <ArrowIcon diagonal />
+                  </a>
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-all group-hover:rotate-45 group-hover:bg-black group-hover:text-white"
+                  >
+                    <ArrowIcon diagonal />
+                  </span>
+                )}
               </div>
             </article>
           ))}

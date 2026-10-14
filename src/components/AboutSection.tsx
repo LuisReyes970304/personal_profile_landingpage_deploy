@@ -40,7 +40,7 @@ export function AboutSection() {
         <div className="flex flex-col justify-between">
           <div data-reveal>
             <p className="mb-7 text-xs font-bold uppercase tracking-[0.2em] text-lime">
-              02 — Sobre mí
+              Sobre mí
             </p>
             <h2
               id="sobre-mi-title"
@@ -50,9 +50,7 @@ export function AboutSection() {
               <span className="block text-white/35">Ideas sin ruido.</span>
             </h2>
             <p className="max-w-2xl text-lg leading-relaxed text-white/55 md:text-xl">
-              Llevo más de 8 años creando productos digitales para startups y
-              equipos ambiciosos. Me gusta convertir problemas complejos en
-              experiencias sencillas, útiles y con carácter.
+              Soy un programador emergente, con cerca de dos años de experiencia en creación de aplicaciones web, landing pages y REST APIs. Me apasiona convinar las mejores prácticas de desarrollo y el uso responsable de las tecnologias para crear experiencias digitales que sean rápidas, seguras y memorables. 
             </p>
           </div>
 
