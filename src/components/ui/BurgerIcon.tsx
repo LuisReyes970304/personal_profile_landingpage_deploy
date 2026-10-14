@@ -8,7 +8,7 @@ export function BurgerIcon({ open = false }: BurgerIconProps) {
     <span aria-hidden="true" className="relative block h-4 w-5">
       <span
         className={`absolute inset-x-0 top-0 h-0.5 bg-current transition-transform duration-200 ${
-          open ? "translate-y-[7px] rotate-45" : ""
+          open ? "translate-y-1.75 rotate-45" : ""
         }`}
       />
       <span
@@ -18,7 +18,7 @@ export function BurgerIcon({ open = false }: BurgerIconProps) {
       />
       <span
         className={`absolute inset-x-0 bottom-0 h-0.5 bg-current transition-transform duration-200 ${
-          open ? "-translate-y-[7px] -rotate-45" : ""
+          open ? "-translate-y-1.75 -rotate-45" : ""
         }`}
       />
     </span>
