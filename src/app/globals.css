@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0c0c;
+  --color-cream: #f5f4ef;
+  --color-paper: #f1f0e9;
+  --color-coal: #111111;
+  --color-lime: #c7ff43;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-serif: var(--font-dm-serif-display), serif;
+}
+
+html {
+  background: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-width: 320px;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
