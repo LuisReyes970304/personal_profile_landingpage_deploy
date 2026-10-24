@@ -64,6 +64,7 @@ Project skills in `.claude/skills/`:
 - Import with the `@/*` alias. Use `next/image` for images and `next/link` for internal links.
 - Semantic HTML and accessibility are required (see `app-style`).
 - Don't add a Claude `Co-Authored-By` line or any other Claude attribution to commits or PRs.
+- Commit directly on `main`. Don't create branches or worktrees unless explicitly asked.
 
 ## Conventions
 - All code, comments, and docs must be in English.
