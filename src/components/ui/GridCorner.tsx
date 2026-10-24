@@ -26,7 +26,7 @@ export function GridCorner({ className = "" }: GridCornerProps) {
       />
       {/* A dot on each intersection; the offset centers it on the 1px lines. */}
       <div
-        className={`absolute inset-0 bg-[radial-gradient(circle,var(--color-ink)_1.5px,transparent_2px)] [background-size:40px_40px] [background-position:-19.5px_-19.5px] opacity-50 ${SHADE_MASK}`}
+        className={`absolute inset-0 bg-[radial-gradient(circle,var(--color-ink)_2.5px,transparent_2px)] [background-size:40px_40px] [background-position:-19.5px_-19.5px] opacity-50 ${SHADE_MASK}`}
       />
     </div>
   );
