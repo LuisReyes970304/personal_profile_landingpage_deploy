@@ -11,11 +11,11 @@ export function AboutSection() {
       <section
           id="sobre-mi"
           aria-labelledby="sobre-mi-title"
-          className="relative px-5 pt-24 md:px-10 md:pt-32"
+          className="relative pt-24 md:pt-32"
       >
           <div
               ref={ref}
-              className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24"
+              className="mx-auto grid max-w-7xl gap-14 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24"
           >
               <div
                   data-reveal

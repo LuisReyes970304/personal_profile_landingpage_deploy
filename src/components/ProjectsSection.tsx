@@ -12,9 +12,9 @@ export function ProjectsSection() {
     <section
       id="proyectos"
       aria-labelledby="proyectos-title"
-      className="bg-paper px-5 py-24 text-coal md:px-10 md:py-32"
+      className="bg-paper py-24 text-coal md:py-32"
     >
-      <div ref={ref} className="mx-auto max-w-7xl">
+      <div ref={ref} className="mx-auto max-w-7xl px-5 md:px-10">
         <div
           data-reveal
           className="mb-16 flex flex-col justify-between gap-7 md:mb-24 md:flex-row md:items-end"
