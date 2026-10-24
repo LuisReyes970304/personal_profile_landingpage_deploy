@@ -5,12 +5,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Personal Landing Page
 
 ## Overview
-Personal profile landing page for Luis Reyes, full-stack developer. Section components in `src/components/`, content (profile, projects, skills) in `src/lib/profile.ts`. Copy is in Spanish (`<html lang="es">`). Placeholder content: the contact email in `profile.ts`, the sample projects, and the about-me text in `AboutSection.tsx` (inherited from the prototype).
+Personal profile landing page for Luis Reyes, full-stack developer. Section components in `src/components/`, content (profile, projects, skills) in `src/lib/profile.ts`. Copy is in Spanish (`<html lang="es">`). Still a placeholder: the "Hagámosla realidad." CTA in `ContactSection.tsx` links to `href="#"` because there's no contact email yet (`profile.ts` has no email field despite its header comment).
 
 ## Tech Stack
 - Framework: Next.js 16 (App Router) + React 19 + TypeScript (strict)
 - Styling: Tailwind CSS v4
-- Animation: `gsap`. `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event); `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin with `scrub` to drive a fixed progress bar tied directly to scroll position; `ProjectsSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx` and `Footer.tsx` use the `hooks/useScrollReveal.ts` hook (same scrubbed-`ScrollTrigger` approach) to fade an element in as it nears and back out once it's scrolled past — mark an element `data-reveal` to pick it up. All of it respects `prefers-reduced-motion`; follow that pattern for any new gsap usage.
+- Animation: `gsap`. `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event); `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin with `scrub` to drive a fixed progress bar tied directly to scroll position; `ProjectRing.tsx` positions the project cards on a 3D ring with `gsap.set` and tweens its rotation (autoplay, drag, horizontal wheel, arrow keys, prev/next buttons); `ProjectsSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx` and `Footer.tsx` use the `hooks/useScrollReveal.ts` hook (same scrubbed-`ScrollTrigger` approach) to fade an element in as it nears and back out once it's scrolled past — mark an element `data-reveal` to pick it up. All of it respects `prefers-reduced-motion`; follow that pattern for any new gsap usage.
 - Linting: ESLint 9 flat config (`eslint.config.mjs`, extends `eslint-config-next` core-web-vitals + typescript)
 - No test framework is set up yet.
 
@@ -47,7 +47,7 @@ src/
 └── hooks/              # Reusable custom React hooks (e.g. useScrollReveal.ts)
 ```
 
-- `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. `Header` and `Footer` come from the root layout, alongside `ui/ScrollProgressBar.tsx` (also rendered in the root layout, fixed above the header).
+- `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. Projects is the only light section (`bg-lime-cream`, with two `ui/GridCorner.tsx` decorations); it renders `ProjectRing.tsx`, which renders a `ProjectCard.tsx` per entry in `projects` (`profile.ts`). A card links to `liveUrl` when set, otherwise `repoUrl`. `Header` and `Footer` come from the root layout, alongside `ui/ScrollProgressBar.tsx` (also rendered in the root layout, fixed above the header).
 - In-page navigation uses hash links (`#inicio`, `#proyectos`, `#sobre-mi`, `#contact`) that must match target `id`s. Three resolve to their own section (`HeroSection.tsx`, `ProjectsSection.tsx`, `AboutSection.tsx`); `#contact` resolves to `id="contact"` on `Footer.tsx` — `ContactSection.tsx` itself has no matching `id`, only an `aria-label`. If you rename or add a section, update the links in `Header.tsx`, `MobileMenu.tsx`, and `HeroSection.tsx`.
 - The header is `fixed`; its own nav is desktop-only (`hidden md:flex`). Below `md`, `Header.tsx` renders `MobileMenu.tsx` (`'use client'`, toggled open/close state), which duplicates the same links and uses `ui/BurgerIcon.tsx` for the toggle icon. Keep both navs in sync when changing links.
 Project skills in `.claude/skills/`:
