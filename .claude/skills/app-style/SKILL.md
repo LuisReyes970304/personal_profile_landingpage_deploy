@@ -15,6 +15,7 @@ Theme tokens are defined in `@theme` in `src/app/globals.css`. Always use them, 
 | `ink` | `#0c0c0c` | Page background, dark sections, text on lime |
 | `cream` | `#f5f4ef` | Default text on dark |
 | `paper` | `#f1f0e9` | Light section background |
+| `sage` | `#e9f1df` | Soft green light section background (Projects) |
 | `coal` | `#111111` | Text on light sections |
 | `lime` | `#c7ff43` | The single accent: highlights, CTAs, hover states |
 
@@ -22,7 +23,7 @@ Theme tokens are defined in `@theme` in `src/app/globals.css`. Always use them, 
 - Borders: `border-white/10`–`/15` on dark, `border-black/20` on light.
 - In arbitrary values, reference tokens with `var(--color-lime)` instead of hex.
 - If a new color is truly needed, add a token to `@theme` in `globals.css` instead of a one-off value.
-- Sections alternate dark (`bg-ink`, default) and light (`bg-paper text-coal`). The site does not switch on `prefers-color-scheme`.
+- Sections alternate dark (`bg-ink`, default) and light (`bg-paper text-coal`, or `bg-sage text-coal`). The site does not switch on `prefers-color-scheme`.
 
 ## Typography
 

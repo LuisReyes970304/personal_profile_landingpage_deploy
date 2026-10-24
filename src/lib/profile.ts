@@ -11,6 +11,8 @@ export type Project = {
   tone: string;
   /** Link to the project's repository or live demo, if available. */
   repoUrl: string;
+  /** Link to the deployed app; the card links here instead of the repo when set. */
+  liveUrl?: string;
 };
 
 export const profile = {
@@ -62,10 +64,11 @@ export const projects: Project[] = [
     title: "KeepeR",
     category: "Producto · Seguridad ciudadana",
     description:
-      "Plataforma de seguridad ciudadana con paneles por rol para policía, bomberos, ambulancias y vecinos: reportes de incidentes en mapa, botón SOS y moderación de reportes.",
+      "Plataforma de seguridad ciudadana con paneles por rol, mapa de incidentes y botón SOS.",
     tags: ["FastAPI", "PostgreSQL", "MapLibre"],
     tone: "from-[#43ffb0] to-[#4d7cff]",
     repoUrl: "https://github.com/LuisReyes970304/keeper-frontend",
+    liveUrl: "https://keeper-frontend-tcqm.onrender.com/",
   },
 ];
 

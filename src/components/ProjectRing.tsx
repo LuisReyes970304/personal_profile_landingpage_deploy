@@ -66,7 +66,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
         x: Math.sin(rad) * radius,
         z: (Math.cos(rad) - 1) * radius * 0.9,
         rotationY: Math.sin(rad) * 35,
-        opacity: 0.3 + front * 0.7,
+        opacity: 0.55 + front * 0.45,
         zIndex: Math.round(front * 100),
       });
     });
@@ -252,7 +252,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
       <div className="mt-6 flex shrink-0 items-center justify-between gap-5">
         <p
           aria-live={paused || interacting ? "polite" : "off"}
-          className="text-xs font-semibold uppercase tracking-widest text-black/55"
+          className="text-xs font-semibold uppercase tracking-widest text-black/70"
         >
           <span aria-hidden="true">
             {projects[active].number} / {String(count).padStart(2, "0")}
