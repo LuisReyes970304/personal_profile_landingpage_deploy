@@ -8,7 +8,7 @@ import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import type { Project } from "@/lib/profile";
 
 /** Seconds each project stays in the middle before the ring turns on its own. */
-const AUTOPLAY_DELAY = 4;
+const AUTOPLAY_DELAY = 3;
 /** Pixels a pointer has to travel before a press becomes a drag instead of a click. */
 const DRAG_THRESHOLD = 6;
 /** Accumulated horizontal wheel delta that turns the ring one step. */
@@ -96,7 +96,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
       target.current = index;
       gsap.to(rotation.current, {
         value: index * step,
-        duration: prefersReducedMotion() ? 0 : 0.9,
+        duration: prefersReducedMotion() ? 0 : 0.8,
         ease: "power3.inOut",
         overwrite: true,
         onUpdate: render,

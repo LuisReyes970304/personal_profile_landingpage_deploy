@@ -57,6 +57,16 @@ export const projects: Project[] = [
     tone: "from-[#9a7cff] to-[#ff82c8]",
     repoUrl: "https://github.com/LuisReyes970304/recorder_screen.git",
   },
+  {
+    number: "04",
+    title: "KeepeR",
+    category: "Producto · Seguridad ciudadana",
+    description:
+      "Plataforma de seguridad ciudadana con paneles por rol para policía, bomberos, ambulancias y vecinos: reportes de incidentes en mapa, botón SOS y moderación de reportes.",
+    tags: ["FastAPI", "PostgreSQL", "MapLibre"],
+    tone: "from-[#43ffb0] to-[#4d7cff]",
+    repoUrl: "https://github.com/LuisReyes970304/keeper-frontend",
+  },
 ];
 
 export const skills = [
