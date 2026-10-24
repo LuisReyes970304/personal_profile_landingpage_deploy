@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import { HashLink } from "@/components/ui/HashLink";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { profile } from "@/lib/profile";
 import { gsap } from "gsap";
@@ -127,7 +127,7 @@ export function HeroSection() {
                             diseño, la tecnología, la seguridad y el propósito
                             trabajan juntos.
                         </p>
-                        <Link
+                        <HashLink
                             href="#proyectos"
                             className="group flex w-fit items-center gap-3 border-b border-white/40 pb-2 text-sm font-semibold uppercase tracking-widest transition-colors hover:border-lime hover:text-lime"
                         >
@@ -135,7 +135,7 @@ export function HeroSection() {
                             <span className="transition-transform group-hover:translate-x-1">
                                 <ArrowIcon />
                             </span>
-                        </Link>
+                        </HashLink>
                     </div>
                 </div>
 

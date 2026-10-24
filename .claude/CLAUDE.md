@@ -61,7 +61,7 @@ Project skills in `.claude/skills/`:
 - Atomic, generic, stateless elements go in `components/ui/`; composed components in `components/`; content, helpers and API clients in `lib/`.
 - Custom hooks go in `hooks/` as `useSomething.ts`.
 - Server Components by default. Add `'use client'` only for state, effects or browser APIs, and keep the client part as small as possible.
-- Import with the `@/*` alias. Use `next/image` for images and `next/link` for internal links.
+- Import with the `@/*` alias. Use `next/image` for images and `next/link` for internal links. For in-page hash links (`#section`), use `ui/HashLink.tsx` instead, so clicking a link whose hash is already in the URL still scrolls to the section.
 - Semantic HTML and accessibility are required (see `app-style`).
 - Don't add a Claude `Co-Authored-By` line or any other Claude attribution to commits or PRs.
 - Commit directly on `main`. Don't create branches or worktrees unless explicitly asked.
