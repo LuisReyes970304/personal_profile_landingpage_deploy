@@ -2,17 +2,32 @@ type GridCornerProps = {
   className?: string;
 };
 
+// Each mask is (top band ∪ side band) ∩ a fade away from the corner, so every
+// layer hugs the same two edges. The grid's mask is the shade's, scaled up.
+const SHADE_MASK =
+  "[mask-image:radial-gradient(ellipse_100%_100%_at_0_0,black_15%,transparent_85%),linear-gradient(to_bottom,black,10%,transparent_45%),linear-gradient(to_right,black,8%,transparent_35%)] [mask-composite:intersect,add,add]";
+const GRID_MASK =
+  "[mask-image:radial-gradient(ellipse_100%_100%_at_0_0,black_30%,transparent_100%),linear-gradient(to_bottom,black,20%,transparent_60%),linear-gradient(to_right,black,15%,transparent_48%)] [mask-composite:intersect,add,add]";
+
 /**
- * Decorative grid of thin ink lines that hugs the top and left edges of its
- * box, strongest at the top-left corner and fading toward the center.
- * Rotate it 180° to anchor it to the bottom-right instead.
+ * Decorative soft ink shade and 40px grid that hug the top and left edges of
+ * their box, strongest at the top-left corner. Grid lines are light over the
+ * shade and dark beyond it. Rotate it 180° to anchor it to the bottom-right.
  */
 export function GridCorner({ className = "" }: GridCornerProps) {
   return (
-    <div
-      aria-hidden="true"
-      // Mask: (top band ∪ left band) ∩ a long fade away from the corner.
-      className={`pointer-events-none absolute h-full w-full bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] [background-size:40px_40px] opacity-40 [mask-image:radial-gradient(ellipse_100%_100%_at_0_0,black_30%,transparent_95%),linear-gradient(to_bottom,black,transparent_35%),linear-gradient(to_right,black,transparent_25%)] [mask-composite:intersect,add,add] ${className}`}
-    />
+    <div aria-hidden="true" className={`pointer-events-none absolute h-full w-full ${className}`}>
+      <div className={`absolute inset-0 bg-ink/55 ${SHADE_MASK}`} />
+      <div
+        className={`absolute inset-0 bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] [background-size:40px_40px] opacity-40 ${GRID_MASK}`}
+      />
+      <div
+        className={`absolute inset-0 bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] [background-size:40px_40px] opacity-20 ${SHADE_MASK}`}
+      />
+      {/* A dot on each intersection; the offset centers it on the 1px lines. */}
+      <div
+        className={`absolute inset-0 bg-[radial-gradient(circle,var(--color-ink)_1.5px,transparent_2px)] [background-size:40px_40px] [background-position:-19.5px_-19.5px] opacity-50 ${SHADE_MASK}`}
+      />
+    </div>
   );
 }
