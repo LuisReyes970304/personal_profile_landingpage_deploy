@@ -189,6 +189,13 @@ export function ProjectRing({ projects }: ProjectRingProps) {
     goTo(Math.round(rotation.current.value / step));
   }
 
+  // Turns the shortest way round to project `index`.
+  function goToProject(index: number) {
+    const current = ((target.current % count) + count) % count;
+    const forward = (index - current + count) % count;
+    goTo(target.current + (forward > count / 2 ? forward - count : forward));
+  }
+
   function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
@@ -250,17 +257,41 @@ export function ProjectRing({ projects }: ProjectRingProps) {
       </div>
 
       <div className="mt-6 flex shrink-0 items-center justify-between gap-5">
-        <p
-          aria-live={paused || interacting ? "polite" : "off"}
-          className="text-xs font-semibold uppercase tracking-widest text-black/70"
-        >
-          <span aria-hidden="true">
-            {projects[active].number} / {String(count).padStart(2, "0")}
-          </span>
-          <span className="sr-only">
-            Proyecto {active + 1} de {count}: {projects[active].title}
-          </span>
-        </p>
+        <div className="flex items-center gap-5">
+          <p
+            aria-live={paused || interacting ? "polite" : "off"}
+            className="text-xs font-semibold uppercase tracking-widest text-black/70"
+          >
+            <span aria-hidden="true">
+              {projects[active].number} / {String(count).padStart(2, "0")}
+            </span>
+            <span className="sr-only">
+              Proyecto {active + 1} de {count}: {projects[active].title}
+            </span>
+          </p>
+
+          <ul className="hidden items-center sm:flex" aria-label="Ir a un proyecto">
+            {projects.map((project, i) => (
+              <li key={project.title}>
+                <button
+                  type="button"
+                  onClick={() => goToProject(i)}
+                  aria-label={`Ver ${project.title}`}
+                  aria-current={i === active ? "true" : undefined}
+                  className="group/step grid h-11 place-items-center px-1"
+                >
+                  <span
+                    className={`block h-1 rounded-full motion-safe:transition-all ${
+                      i === active
+                        ? "w-10 bg-coal"
+                        : "w-5 bg-black/20 group-hover/step:bg-black/50"
+                    }`}
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="flex items-center gap-3">
           <button
