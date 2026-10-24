@@ -53,7 +53,7 @@ export const projects: Project[] = [
     category: "Creación · digital",
     description:
       "Grabador de pantalla hecho con JavaScript Vanilla. Permite al usuario grabar su pantalla y descargar el video resultante en formato WebM.",
-    tags: ["Next.js", "AI", "WebGL"],
+    tags: ["JavaScript", "MediaRecorder", "WebM"],
     tone: "from-[#9a7cff] to-[#ff82c8]",
     repoUrl: "https://github.com/LuisReyes970304/recorder_screen.git",
   },

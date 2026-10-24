@@ -11,7 +11,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div
           ref={ref}
-          className="mt-20 flex flex-col gap-5 border-t border-white/10 pt-6 text-xs uppercase tracking-widest text-white/35 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-20 flex flex-col gap-5 border-t border-white/10 pt-6 text-xs uppercase tracking-widest text-white/55 sm:flex-row sm:items-center sm:justify-between"
         >
           <span>
             © {profile.copyrightYear} {profile.name}
@@ -20,7 +20,7 @@ export function Footer() {
             {profile.socials.map((social) => (
               <li key={social.label}>
                 <a
-                  className="transition-colors hover:text-white"
+                  className="inline-block py-2 transition-colors hover:text-white"
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"

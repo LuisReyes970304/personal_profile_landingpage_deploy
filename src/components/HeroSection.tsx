@@ -116,7 +116,7 @@ export function HeroSection() {
                                 ref={accentRef}
                                 className="block text-[clamp(3.6rem,9vw,6.5rem)] leading-[1.1] tracking-[-0.065em] text-lime"
                             >
-                                que hacen ideas posibles.
+                                que hace ideas posibles.
                             </span>
                         </h1>
                     </div>
@@ -139,7 +139,7 @@ export function HeroSection() {
                     </div>
                 </div>
 
-                <div className="mt-40 flex items-center justify-between border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/35">
+                <div className="mt-40 flex items-center justify-between border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
                     <span>{profile.location}</span>
 
                     <span>© {profile.copyrightYear}</span>

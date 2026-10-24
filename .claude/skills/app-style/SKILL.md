@@ -18,7 +18,7 @@ Theme tokens are defined in `@theme` in `src/app/globals.css`. Always use them, 
 | `coal` | `#111111` | Text on light sections |
 | `lime` | `#c7ff43` | The single accent: highlights, CTAs, hover states |
 
-- Secondary text uses opacity, not new colors: on dark `text-white/55` (body), `text-white/35` (muted), `text-white/60`–`/70` (emphasis); on light `text-black/55`, `text-black/45`, `text-black/40`.
+- Secondary text uses opacity, not new colors: on dark `text-white/55` (body and muted), `text-white/60`–`/70` (emphasis); on light `text-black/55`. These are the lowest opacities that meet WCAG AA (4.5:1) on `ink` and `paper`; lower values (`text-white/35`, `text-black/45`) are only for large headings or decorative text.
 - Borders: `border-white/10`–`/15` on dark, `border-black/20` on light.
 - In arbitrary values, reference tokens with `var(--color-lime)` instead of hex.
 - If a new color is truly needed, add a token to `@theme` in `globals.css` instead of a one-off value.
@@ -55,7 +55,7 @@ Fonts come from `next/font` in `src/app/layout.tsx`: `font-sans` = Manrope (defa
 
 - Decorative elements (glows, gradients, icon wrappers) get `aria-hidden="true"`.
 - Images use `next/image` with meaningful Spanish `alt` text.
-- Keep contrast readable: don't go below `/35` opacity for text that conveys information.
+- Keep contrast readable: text that conveys information stays at `/55` or above (WCAG AA); `text-white/35` is fine only for large heading contrast lines like `Ideas sin ruido.`
 - Every interactive element must be reachable and visible with the keyboard; don't remove focus outlines.
 - Smooth scrolling is already gated behind `prefers-reduced-motion` in `globals.css`; keep new motion subtle.
 

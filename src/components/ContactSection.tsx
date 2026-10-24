@@ -10,7 +10,7 @@ export function ContactSection() {
     <section aria-label="Contacto" className="pt-28 md:pt-36">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div ref={ref} className="border-t border-white/15 pt-16">
-          <p data-reveal className="mb-6 text-sm text-white/45">
+          <p data-reveal className="mb-6 text-sm text-white/55">
             ¿Tienes una idea en mente?
           </p>
           <a

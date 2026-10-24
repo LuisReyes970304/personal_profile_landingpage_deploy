@@ -32,7 +32,7 @@ export function Header() {
             className="uppercase tracking-wider transition-colors hover:text-lime" 
             href="#sobre-mi"
           >
-            Sobre mi
+            Sobre mí
           </Link>
       
           <Link

@@ -34,7 +34,7 @@ export function AboutSection() {
                       className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"
                   />
                   <p className="absolute bottom-7 left-7 max-w-48 text-sm leading-relaxed text-white/75">
-                      En busqueda de la perfección. Apasionado por los
+                      En búsqueda de la perfección. Apasionado por los
                       detalles.
                   </p>
               </div>
@@ -42,7 +42,7 @@ export function AboutSection() {
               <div className="flex flex-col justify-between">
                   <div data-reveal>
                       <p className="mb-7 text-xs font-bold uppercase tracking-[0.2em] text-lime">
-                          Sobre mí
+                          02 — Sobre mí
                       </p>
                       <h2
                           id="sobre-mi-title"
@@ -56,9 +56,9 @@ export function AboutSection() {
                       <p className="max-w-2xl text-lg leading-relaxed text-white/55 md:text-xl">
                           Soy un programador emergente, con cerca de dos años
                           de experiencia en creación de aplicaciones web,
-                          landing pages y REST APIs. Me apasiona convinar las
+                          landing pages y REST APIs. Me apasiona combinar las
                           mejores prácticas de desarrollo y el uso responsable
-                          de las tecnologias para crear experiencias digitales
+                          de las tecnologías para crear experiencias digitales
                           que sean rápidas, seguras y memorables.
                       </p>
                   </div>
