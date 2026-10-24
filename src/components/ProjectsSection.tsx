@@ -1,7 +1,6 @@
 "use client";
 
-import { ArrowIcon } from "@/components/ui/ArrowIcon";
-import { Tag } from "@/components/ui/Tag";
+import { ProjectRing } from "@/components/ProjectRing";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { projects } from "@/lib/profile";
 
@@ -12,16 +11,16 @@ export function ProjectsSection() {
     <section
       id="proyectos"
       aria-labelledby="proyectos-title"
-      className="bg-paper py-24 text-coal md:py-32"
+      className="flex min-h-screen flex-col overflow-x-clip bg-paper pb-10 pt-28 text-coal md:h-screen"
     >
-      <div ref={ref} className="mx-auto max-w-7xl px-5 md:px-10">
+      <div ref={ref} className="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col px-5 md:px-10">
         <div
           data-reveal
-          className="mb-16 flex flex-col justify-between gap-7 md:mb-24 md:flex-row md:items-end"
+          className="mb-8 flex shrink-0 flex-col justify-between gap-7 md:mb-10 md:flex-row md:items-end"
         >
           <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-black/45">
-              Trabajo seleccionado
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-black/55">
+              01 — Trabajo seleccionado
             </p>
             <h2
               id="proyectos-title"
@@ -37,64 +36,7 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="border-t border-black/20">
-          {projects.map((project) => (
-            <article
-              data-reveal
-              key={project.title}
-              className="group grid gap-7 border-b border-black/20 py-9 md:grid-cols-[0.12fr_0.75fr_0.95fr_0.4fr] md:items-center md:py-12"
-            >
-              <span className="text-xs font-semibold text-black/40">{project.number}</span>
-
-              <div>
-                <p className="mb-2 text-xs uppercase tracking-wider text-black/45">
-                  {project.category}
-                </p>
-                <h3 className="text-3xl font-semibold tracking-[-0.04em] md:text-4xl">
-                  {project.title}
-                </h3>
-              </div>
-
-              <div>
-                <p className="mb-5 max-w-md leading-relaxed text-black/55">
-                  {project.description}
-                </p>
-                <ul className="flex flex-wrap gap-2" aria-label="Tecnologías">
-                  {project.tags.map((tag) => (
-                    <li key={tag}>
-                      <Tag>{tag}</Tag>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex items-center justify-between md:justify-end md:gap-5">
-                <div
-                  aria-hidden="true"
-                  className={`h-14 w-24 rounded-full bg-linear-to-r ${project.tone} opacity-80 blur-[1px] transition-all duration-500 group-hover:w-28 group-hover:opacity-100`}
-                />
-                {project.repoUrl ? (
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Ver repositorio de ${project.title}`}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-all hover:rotate-45 hover:bg-black hover:text-white group-hover:rotate-45 group-hover:bg-black group-hover:text-white"
-                  >
-                    <ArrowIcon diagonal />
-                  </a>
-                ) : (
-                  <span
-                    aria-hidden="true"
-                    className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-all group-hover:rotate-45 group-hover:bg-black group-hover:text-white"
-                  >
-                    <ArrowIcon diagonal />
-                  </span>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
+        <ProjectRing projects={projects} />
       </div>
     </section>
   );
