@@ -284,7 +284,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
                     className={`block h-1 rounded-full motion-safe:transition-all ${
                       i === active
                         ? "w-10 bg-coal"
-                        : "w-5 bg-black/20 group-hover/step:bg-black/50"
+                        : "w-5 bg-black/70 group-hover/step:bg-black/50"
                     }`}
                   />
                 </button>
@@ -305,7 +305,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
             type="button"
             onClick={() => goTo(target.current - 1)}
             aria-label="Proyecto anterior"
-            className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-colors hover:bg-coal hover:text-cream"
+            className="grid h-11 w-11 place-items-center rounded-full border border-black/75 transition-colors hover:bg-coal hover:text-cream"
           >
             <span className="block rotate-180">
               <ArrowIcon />
@@ -315,7 +315,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
             type="button"
             onClick={() => goTo(target.current + 1)}
             aria-label="Proyecto siguiente"
-            className="grid h-11 w-11 place-items-center rounded-full border border-black/25 transition-colors hover:bg-coal hover:text-cream"
+            className="grid h-11 w-11 place-items-center rounded-full border border-black/75 transition-colors hover:bg-coal hover:text-cream"
           >
             <ArrowIcon />
           </button>

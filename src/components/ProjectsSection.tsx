@@ -41,7 +41,7 @@ export function ProjectsSection() {
               </span>
             </h2>
           </div>
-          <p className="max-w-sm text-base leading-relaxed text-black/70">
+          <p className="max-w-sm text-base leading-relaxed text-black/90">
             Una selección de productos digitales creados para conectar marcas,
             personas y buenas ideas.
           </p>
