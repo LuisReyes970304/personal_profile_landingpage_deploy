@@ -14,7 +14,7 @@ export function Footer() {
           className="mt-20 flex flex-col gap-5 border-t border-white/10 pt-6 text-xs uppercase tracking-widest text-white/55 sm:flex-row sm:items-center sm:justify-between"
         >
           <span>
-            © {profile.copyrightYear} {profile.name}
+            © {profile.name}
           </span>
           <ul className="flex gap-6">
             {profile.socials.map((social) => (

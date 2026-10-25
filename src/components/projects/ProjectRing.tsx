@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, PointerEvent } from "react";
 import { gsap } from "gsap";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import type { Project } from "@/lib/profile";
 
@@ -297,7 +297,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
           <button
             type="button"
             onClick={() => setPaused((prev) => !prev)}
-            className="h-11 rounded-full border border-black/25 px-5 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-coal hover:text-cream"
+            className="h-11 rounded-full border border-black px-5 text-xs font-semibold bg-white/25 uppercase tracking-widest transition-colors hover:bg-coal hover:text-cream"
           >
             {paused ? "Reanudar" : "Pausar"}
           </button>
@@ -305,7 +305,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
             type="button"
             onClick={() => goTo(target.current - 1)}
             aria-label="Proyecto anterior"
-            className="grid h-11 w-11 place-items-center rounded-full border border-black/75 transition-colors hover:bg-coal hover:text-cream"
+            className="grid h-11 w-11 place-items-center rounded-full border bg-white/25 border-black transition-colors hover:bg-coal hover:text-cream"
           >
             <span className="block rotate-180">
               <ArrowIcon />
@@ -315,7 +315,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
             type="button"
             onClick={() => goTo(target.current + 1)}
             aria-label="Proyecto siguiente"
-            className="grid h-11 w-11 place-items-center rounded-full border border-black/75 transition-colors hover:bg-coal hover:text-cream"
+            className="grid h-11 w-11 place-items-center rounded-full border bg-white/25 border-black transition-colors hover:bg-coal hover:text-cream"
           >
             <ArrowIcon />
           </button>

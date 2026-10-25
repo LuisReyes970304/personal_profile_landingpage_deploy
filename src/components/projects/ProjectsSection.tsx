@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectRing } from "@/components/ProjectRing";
+import { ProjectRing } from "@/components/projects/ProjectRing";
 import { GridCorner } from "@/components/ui/GridCorner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { projects } from "@/lib/profile";

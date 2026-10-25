@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import { HashLink } from "@/components/ui/HashLink";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
+import { LiveTimeClock } from "@/components/ui/LiveTimeClock";
+import { CurrentDate } from "@/components/ui/CurrentDate";
 import { profile } from "@/lib/profile";
 import { gsap } from "gsap";
 
@@ -108,9 +110,9 @@ export function HeroSection() {
                             </span>
                             . {profile.role}.
                         </p>
-                        <h1 className="max-w-5xl overflow-hidden pb-1 text-[clamp(3.6rem,9vw,6rem)] font-semibold leading-[1.1] tracking-[-0.065em]">
+                        <h1 className="max-w-5xl overflow-hidden pb-1 text-[clamp(3.6rem,9vw,5rem)] font-semibold leading-[1.1] tracking-[-0.065em]">
                             <span ref={headingRef} className="block">
-                                Construyo software
+                                Construyendo software
                             </span>
                             <span
                                 ref={accentRef}
@@ -139,10 +141,14 @@ export function HeroSection() {
                     </div>
                 </div>
 
-                <div className="mt-40 flex items-center justify-between border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
-                    <span>{profile.location}</span>
-
-                    <span>© {profile.copyrightYear}</span>
+                <div className="mt-40 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
+                    <span>
+                        {profile.location}
+                    </span>
+                    <span className="flex flex-wrap gap-x-12 gap-y-3">
+                        <LiveTimeClock />
+                        <CurrentDate />
+                    </span>
                 </div>
             </div>
         </section>

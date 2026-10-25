@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Manrope } from "next/font/google";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Footer } from "@/components/footer/Footer";
+import { Header } from "@/components/header/Header";
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { profile } from "@/lib/profile";
 import "./globals.css";

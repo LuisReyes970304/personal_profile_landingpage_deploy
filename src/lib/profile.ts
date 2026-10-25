@@ -20,8 +20,7 @@ export const profile = {
   firstName: "Luis",
   initials: "LR",
   role: "Desarrollador full stack",
-  location: "Barranquilla · Colombia",
-  copyrightYear: 2026,
+  location: "Barranquilla · Colombia ",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/luis-reyes-caro/?isSelfProfile=true" },
     { label: "GitHub", href: "https://github.com/LuisReyes970304" },

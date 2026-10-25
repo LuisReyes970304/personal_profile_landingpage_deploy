@@ -1,6 +1,6 @@
 import { HashLink } from "@/components/ui/HashLink";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
-import { MobileMenu } from "@/components/MobileMenu";
+import { MobileMenu } from "@/components/header/MobileMenu";
 import { profile } from "@/lib/profile";
 
 export function Header() {
