@@ -14,8 +14,8 @@ export function ProjectsSection() {
       aria-labelledby="proyectos-title"
       className="relative isolate flex min-h-screen flex-col overflow-x-clip bg-lime-cream pb-10 pt-28 text-coal md:h-screen"
     >
-      <GridCorner className="left-0 top-0 -z-10" />
-      <GridCorner className="bottom-0 right-0 -z-10 rotate-180" />
+      <GridCorner className="left-0 top-0 h-full w-1/2 -z-10" />
+      <GridCorner className="bottom-0 right-0 h-full w-1/2 -z-10 rotate-180" />
       <div ref={ref} className="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col px-5 md:px-10">
         <div
           data-reveal
