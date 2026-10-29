@@ -5,7 +5,11 @@
       "Bash(git add:*)",
       "Bash(git switch *)",
       "Bash(git merge *)",
-      "Bash(git branch *)"
+      "Bash(git branch *)",
+      "Bash(node /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shot.js http://localhost:3001/ 390 844 /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shots/mobile-before.png '#proyectos')",
+      "Bash(node /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shot.js http://localhost:3001/ 1280 900 /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shots/lg-before.png '#proyectos')",
+      "Bash(lsof -ti:3002 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)"
     ],
     "deny": [
       "Read(*.env)",

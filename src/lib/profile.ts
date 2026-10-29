@@ -45,7 +45,7 @@ export const projects: Project[] = [
     description:
       "Aplicación web para la gestión de campañas de call center, con panel de administración y diseño responsivo.",
     tags: ["TypeScript", "Next.js", "TailwindCSS"],
-    tone: "from-[#ff7a59] to-[#ffcf48]",
+    tone: "from-[#43ffb0] to-[#4d7cff]",
     repoUrl: "https://github.com/Callcenter-Application/cc_frontend_v2_next.git",
   },
   {
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description:
       "Grabador de pantalla hecho con JavaScript Vanilla. Permite al usuario grabar su pantalla y descargar el video resultante en formato WebM.",
     tags: ["JavaScript", "MediaRecorder", "WebM"],
-    tone: "from-[#9a7cff] to-[#ff82c8]",
+    tone: "from-[#c7ff43] to-[#76d8ff]",
     repoUrl: "https://github.com/LuisReyes970304/recorder_screen.git",
   },
   {

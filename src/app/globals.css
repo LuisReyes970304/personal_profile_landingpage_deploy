@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0c0c0c;
+  --color-ink: #111211;
   --color-cream: #f5f4ef;
   --color-paper: #f1f0e9;
   --color-lime-cream: #edf0eb;
-  --color-coal: #111111;
+  --color-coal: #111211;
   --color-lime: #13f29c
 }
 
