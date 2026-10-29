@@ -41,12 +41,9 @@ export function AboutSection() {
 
               <div className="flex flex-col justify-between">
                   <div data-reveal>
-                      <p className="mb-7 text-xs font-bold uppercase tracking-[0.2em] text-lime">
-                          02 — Sobre mí
-                      </p>
                       <h2
                           id="sobre-mi-title"
-                          className="mb-9 text-4xl font-semibold leading-[1.04] tracking-[-0.05em] md:text-6xl"
+                          className="mb-9 text-4xl font-semibold leading-[1.04] tracking-tighter md:text-6xl"
                       >
                           Código limpio.
                           <span className="block text-white/35">

@@ -17,11 +17,12 @@ Personal profile landing page for Luis Reyes, full-stack developer. Section comp
 ## Next.js 16 caveat
 This Next.js version has breaking changes relative to older training data. Before writing Next-specific code, check the bundled docs in `node_modules/next/dist/docs/` (`01-app/` covers the App Router; ignore `02-pages/`, this project doesn't use the Pages Router) and heed deprecation notices. Notable points already visible in the code:
 - `next.config.ts` enables `cacheComponents` and `partialPrefetching`, which change data-fetching/caching semantics; check the docs before using dynamic APIs or fetch caching.
+- `next.config.ts` also sets `experimental.agentUpgrade: "security"` and allows `next/image` to load from `images.unsplash.com` via `images.remotePatterns`.
 - Route props use the global typed helpers (e.g. `LayoutProps<"/">`, `PageProps<...>`) rather than hand-written prop types.
 
 
 ## Styling
-Tailwind v4 is wired through Turbopack (`@tailwindcss/turbopack` loader in `next.config.ts`), not PostCSS. There is no `tailwind.config` or `postcss.config`; theme tokens live in `src/app/globals.css`. For any visual decision, use the `app-style` skill.
+Tailwind v4 is wired through Turbopack (`@tailwindcss/turbopack` loader in `next.config.ts`), not PostCSS. There is no `tailwind.config` or `postcss.config`; theme tokens live in `src/app/globals.css`. For any visual decision, use the `app-style` skill followed by the another skills.
 
 ## Commands
 - `npm run dev`: start dev server (http://localhost:3000)

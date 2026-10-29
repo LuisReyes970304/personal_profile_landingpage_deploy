@@ -13,20 +13,22 @@ const GRID_MASK =
  * Decorative soft ink shade and 40px grid that hug the top and left edges of
  * their box, strongest at the top-left corner. Grid lines are light over the
  * shade and dark beyond it. Rotate it 180° to anchor it to the bottom-right.
+ * Size and position (e.g. a half-width box per side) come entirely from
+ * `className` so two instances placed on opposite edges don't overlap.
  */
 export function GridCorner({ className = "" }: GridCornerProps) {
   return (
-    <div aria-hidden="true" className={`pointer-events-none absolute h-full w-full ${className}`}>
+    <div aria-hidden="true" className={`pointer-events-none absolute ${className}`}>
       <div className={`absolute inset-0 bg-ink/55 ${SHADE_MASK}`} />
       <div
-        className={`absolute inset-0 bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] [background-size:40px_40px] opacity-40 ${GRID_MASK}`}
+        className={`absolute inset-0 bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] bg-size-[40px_40px] opacity-40 ${GRID_MASK}`}
       />
       <div
-        className={`absolute inset-0 bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] [background-size:40px_40px] opacity-20 ${SHADE_MASK}`}
+        className={`absolute inset-0 bg-[linear-gradient(to_right,var(--color-ink)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-ink)_1px,transparent_1px)] bg-size-[40px_40px] opacity-20 ${SHADE_MASK}`}
       />
       {/* A dot on each intersection; the offset centers it on the 1px lines. */}
       <div
-        className={`absolute inset-0 bg-[radial-gradient(circle,var(--color-ink)_2.5px,transparent_2px)] [background-size:40px_40px] [background-position:-19.5px_-19.5px] opacity-50 ${SHADE_MASK}`}
+        className={`absolute inset-0 bg-[radial-gradient(circle,var(--color-ink)_2.5px,transparent_2px)] bg-size-[40px_40px] bg-position-[-19.5px_-19.5px] opacity-50 ${SHADE_MASK}`}
       />
     </div>
   );
