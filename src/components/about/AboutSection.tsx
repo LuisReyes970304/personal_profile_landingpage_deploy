@@ -43,7 +43,7 @@ export function AboutSection() {
                   <div data-reveal>
                       <h2
                           id="sobre-mi-title"
-                          className="mb-9 text-4xl font-semibold leading-[1.04] tracking-[-0.05em] md:text-6xl"
+                          className="mb-9 text-4xl font-semibold leading-[1.04] tracking-tighter md:text-6xl"
                       >
                           Código limpio.
                           <span className="block text-white/35">
