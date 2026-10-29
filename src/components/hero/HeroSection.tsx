@@ -93,13 +93,6 @@ export function HeroSection() {
             />
 
             <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-5 pb-10 pt-32 md:px-10 md:pb-14">
-                <p className="mb-12 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/55 md:mb-16">
-                    <span
-                        aria-hidden="true"
-                        className="h-2 w-2 rounded-full bg-lime shadow-[0_0_16px_var(--color-lime)]"
-                    />
-                    Disponible para nuevos retos
-                </p>
 
                 <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.38fr]">
                     <div>
@@ -141,7 +134,7 @@ export function HeroSection() {
                     </div>
                 </div>
 
-                <div className="mt-40 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
+                <div className="mt-50 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
                     <span>
                         {profile.location}
                     </span>

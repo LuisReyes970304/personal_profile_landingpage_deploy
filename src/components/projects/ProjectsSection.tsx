@@ -22,13 +22,6 @@ export function ProjectsSection() {
           className="mb-8 flex shrink-0 flex-col justify-between gap-7 md:mb-10 md:flex-row md:items-end"
         >
           <div>
-            <p className="mb-5 inline-flex w-fit items-center gap-2.5 rounded-full bg-ink py-1.5 pl-2.5 pr-3.5 text-xs font-bold uppercase tracking-[0.2em] text-lime">
-              <span
-                aria-hidden="true"
-                className="size-1.5 rounded-full bg-lime shadow-[0_0_8px_var(--color-lime)]"
-              />
-              01 — Trabajo seleccionado
-            </p>
             <h2
               id="proyectos-title"
               className="text-5xl font-semibold tracking-[-0.055em] md:text-7xl"
