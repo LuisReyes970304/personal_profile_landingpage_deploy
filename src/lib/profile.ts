@@ -65,11 +65,36 @@ export const projects: Project[] = [
   },
 ];
 
-export const skills = [
-  "React / Next.js",
-  "TypeScript",
-  "Node.js / Express",
-  "Nest.js / TypeORM",
-  "SQLite / Postgres",
-  "Python / FastApi",
+export type SkillIcon =
+  | "react"
+  | "nextjs"
+  | "typescript"
+  | "javascript"
+  | "tailwindcss"
+  | "sass"
+  | "express"
+  | "nestjs"
+  | "typeorm"
+  | "sequelize"
+  | "postgresql"
+  | "python"
+  | "fastapi";
+
+export const frontendSkills: SkillIcon[] = [
+  "react",
+  "nextjs",
+  "typescript",
+  "javascript",
+  "tailwindcss",
+  "sass",
+];
+
+export const backendSkills: SkillIcon[] = [
+  "express",
+  "nestjs",
+  "typeorm",
+  "sequelize",
+  "postgresql",
+  "python",
+  "fastapi",
 ];
