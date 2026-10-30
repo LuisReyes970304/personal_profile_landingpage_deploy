@@ -7,8 +7,6 @@ export type Project = {
   category: string;
   description: string;
   tags: string[];
-  /** Tailwind gradient stops for the decorative pill. */
-  tone: string;
   /** Link to the project's repository or live demo, if available. */
   repoUrl: string;
   /** Link to the deployed app; the card links here instead of the repo when set. */
@@ -35,7 +33,6 @@ export const projects: Project[] = [
     description:
       "API REST modular construida con FastAPI, pensada como base reutilizable para servicios backend: operaciones CRUD, validación con Pydantic y persistencia en PostgreSQL.",
     tags: ["Python", "Postgres", "API"],
-    tone: "from-[#c7ff43] to-[#76d8ff]",
     repoUrl: "https://github.com/Callcenter-Application/cc_backend_v1_fastapi.git",
   },
   {
@@ -45,7 +42,6 @@ export const projects: Project[] = [
     description:
       "Aplicación web para la gestión de campañas de call center, con panel de administración y diseño responsivo.",
     tags: ["TypeScript", "Next.js", "TailwindCSS"],
-    tone: "from-[#ff7a59] to-[#ffcf48]",
     repoUrl: "https://github.com/Callcenter-Application/cc_frontend_v2_next.git",
   },
   {
@@ -55,7 +51,6 @@ export const projects: Project[] = [
     description:
       "Grabador de pantalla hecho con JavaScript Vanilla. Permite al usuario grabar su pantalla y descargar el video resultante en formato WebM.",
     tags: ["JavaScript", "MediaRecorder", "WebM"],
-    tone: "from-[#9a7cff] to-[#ff82c8]",
     repoUrl: "https://github.com/LuisReyes970304/recorder_screen.git",
   },
   {
@@ -65,7 +60,6 @@ export const projects: Project[] = [
     description:
       "Plataforma de seguridad ciudadana con paneles por rol, mapa de incidentes y botón SOS.",
     tags: ["FastAPI", "PostgreSQL", "MapLibre"],
-    tone: "from-[#43ffb0] to-[#4d7cff]",
     repoUrl: "https://github.com/LuisReyes970304/keeper-frontend",
     liveUrl: "https://keeper-frontend-tcqm.onrender.com/",
   },

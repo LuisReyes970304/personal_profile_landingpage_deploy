@@ -13,6 +13,8 @@ const AUTOPLAY_DELAY = 3;
 const DRAG_THRESHOLD = 6;
 /** Accumulated horizontal wheel delta that turns the ring one step. */
 const WHEEL_STEP = 60;
+/** Minimum visual gap, in pixels, between two adjacent cards on the ring. */
+const CARD_GAP = 40;
 
 type ProjectRingProps = {
   projects: Project[];
@@ -51,7 +53,14 @@ export function ProjectRing({ projects }: ProjectRingProps) {
   const render = useCallback(() => {
     const stage = stageRef.current;
     if (!stage) return;
-    const radius = Math.min(stage.offsetWidth * 0.36, 460) * fit.current;
+    const baseRadius = Math.min(stage.offsetWidth * 0.36, 460) * fit.current;
+    // Radius needed so adjacent cards keep CARD_GAP of breathing room instead of overlapping.
+    const cardWidth = (cardRefs.current[0]?.offsetWidth ?? 320) * fit.current;
+    // Guard against a near-180° step (e.g. only 2 projects), where the "neighbor" sits
+    // almost directly behind the front card and needs no sideways room.
+    const neighborSin = Math.max(Math.sin((step * Math.PI) / 180), 0.5);
+    const minRadius = (cardWidth + CARD_GAP) / neighborSin;
+    const radius = Math.max(baseRadius, minRadius);
 
     cardRefs.current.forEach((card, i) => {
       if (!card) return;
@@ -226,7 +235,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
     >
       <div
         ref={stageRef}
-        className="relative min-h-[36rem] flex-1 cursor-grab touch-pan-y select-none perspective-[1800px] active:cursor-grabbing md:min-h-0"
+        className="relative min-h-72 flex-1 cursor-grab touch-pan-y select-none perspective-[1800px] active:cursor-grabbing md:min-h-0"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerEnd}
@@ -256,7 +265,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
         ))}
       </div>
 
-      <div className="mt-6 flex shrink-0 items-center justify-between gap-5">
+      <div className="mt-4 flex shrink-0 items-center justify-between gap-5 md:mt-6">
         <div className="flex items-center gap-5">
           <p
             aria-live={paused || interacting ? "polite" : "off"}

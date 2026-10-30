@@ -19,7 +19,7 @@ export function AboutSection() {
           >
               <div
                   data-reveal
-                  className="relative min-h-[32rem] overflow-hidden rounded-[2rem]"
+                  className="relative min-h-128 overflow-hidden rounded-4xl"
               >
                   <Image
                       loading="eager"

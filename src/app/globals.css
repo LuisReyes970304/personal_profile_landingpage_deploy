@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0c0c0c;
+  --color-ink: #111211;
   --color-cream: #f5f4ef;
   --color-paper: #f1f0e9;
   --color-lime-cream: #edf0eb;
-  --color-coal: #111111;
+  --color-coal: #111211;
   --color-lime: #13f29c
 }
 
@@ -16,12 +16,38 @@
 
 html {
   background: var(--color-ink);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-lime) var(--color-ink);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
+}
+
+/* Minimalist themed scrollbar: ink track, lime thumb, no arrow buttons. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-lime);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 body {
