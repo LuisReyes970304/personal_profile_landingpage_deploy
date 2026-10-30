@@ -235,7 +235,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
     >
       <div
         ref={stageRef}
-        className="relative min-h-144 flex-1 cursor-grab touch-pan-y select-none perspective-[1800px] active:cursor-grabbing md:min-h-0"
+        className="relative min-h-72 flex-1 cursor-grab touch-pan-y select-none perspective-[1800px] active:cursor-grabbing md:min-h-0"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerEnd}
@@ -265,7 +265,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
         ))}
       </div>
 
-      <div className="mt-6 flex shrink-0 items-center justify-between gap-5">
+      <div className="mt-4 flex shrink-0 items-center justify-between gap-5 md:mt-6">
         <div className="flex items-center gap-5">
           <p
             aria-live={paused || interacting ? "polite" : "off"}

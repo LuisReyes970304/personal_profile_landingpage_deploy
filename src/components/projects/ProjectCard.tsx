@@ -12,7 +12,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="relative flex h-full w-[min(82vw,24rem)] flex-col overflow-hidden rounded-4xl border-2 border-ink bg-cream text-coal shadow-2xl shadow-black/15">
       <div className="relative flex h-35 shrink-0 items-end overflow-hidden bg-ink px-6 pb-5">
-        <h3 className="text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-cream">
+        <h3 className="text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-lime">
           {project.title}
         </h3>
       </div>
@@ -21,7 +21,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-black">
           {project.category}
         </p>
-        <p className="mb-6 leading-relaxed text-ink/90">{project.description}</p>
+        <p className="mb-6 leading-relaxed text-ink">{project.description}</p>
         <ul className="mb-8 flex flex-wrap gap-2" aria-label="Tecnologías">
           {project.tags.map((tag) => (
             <li key={tag}>
