@@ -10,7 +10,7 @@ Personal profile landing page for Luis Reyes, full-stack developer. Section comp
 ## Tech Stack
 - Framework: Next.js 16 (App Router) + React 19 + TypeScript (strict)
 - Styling: Tailwind CSS v4
-- Animation: `gsap`. `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event); `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin with `scrub` to drive a fixed progress bar tied directly to scroll position; `ProjectRing.tsx` positions the project cards on a 3D ring with `gsap.set` and tweens its rotation (autoplay, drag, horizontal wheel, arrow keys, prev/next buttons); `ProjectsSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx` and `Footer.tsx` use the `hooks/useScrollReveal.ts` hook (same scrubbed-`ScrollTrigger` approach) to fade an element in as it nears and back out once it's scrolled past — mark an element `data-reveal` to pick it up. All of it respects `prefers-reduced-motion`; follow that pattern for any new gsap usage.
+- Animation: `gsap`. `HeroSection.tsx` plays a one-shot intro timeline on mount (replayable via a `hero-intro:replay` window event); `ui/ScrollProgressBar.tsx` uses the `ScrollTrigger` plugin to drive a fixed, read-only progress bar (fill + dot) tied to scroll position — no drag-to-scroll, that's handled by the themed native scrollbar instead (`::-webkit-scrollbar*` rules + `scrollbar-color` in `globals.css`: `color-ink` track, `color-lime` thumb, no scrollbar buttons); `ProjectRing.tsx` positions the project cards on a 3D ring with `gsap.set` and tweens its rotation (autoplay, drag, horizontal wheel, arrow keys, prev/next buttons); `ProjectsSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx` and `Footer.tsx` use the `hooks/useScrollReveal.ts` hook (scrubbed-`ScrollTrigger`) to fade an element in as it nears and back out once it's scrolled past — mark an element `data-reveal` to pick it up. All of it respects `prefers-reduced-motion`; follow that pattern for any new gsap usage.
 - Linting: ESLint 9 flat config (`eslint.config.mjs`, extends `eslint-config-next` core-web-vitals + typescript)
 - No test framework is set up yet.
 
@@ -22,7 +22,7 @@ This Next.js version has breaking changes relative to older training data. Befor
 
 
 ## Styling
-Tailwind v4 is wired through Turbopack (`@tailwindcss/turbopack` loader in `next.config.ts`), not PostCSS. There is no `tailwind.config` or `postcss.config`; theme tokens live in `src/app/globals.css`. For any visual decision, use the `app-style` skill followed by the another skills.
+Tailwind v4 is wired through Turbopack (`@tailwindcss/turbopack` loader in `next.config.ts`), not PostCSS. There is no `tailwind.config` or `postcss.config`; theme tokens live in `src/app/globals.css`. For any visual decision, use the `app-style` skill, then any other relevant skill below (e.g. `accessibility-review`, `design-critique`).
 
 ## Commands
 - `npm run dev`: start dev server (http://localhost:3000)
@@ -54,6 +54,13 @@ src/
 Project skills in `.claude/skills/`:
 - `app-style`: visual style guide. Use for any UI, Tailwind or CSS change.
 - `new-section`: workflow for adding a section or a route.
+- `accessibility-review`: WCAG 2.1 AA audit of a design or page.
+- `design-critique`: structured feedback on usability, hierarchy and consistency.
+- `design-handoff`: developer handoff spec (tokens, props, states, breakpoints) from a design.
+- `design-system`: audit, document or extend the design system.
+- `research-synthesis`: distill research data (interviews, surveys, tickets) into themes and recommendations.
+- `user-research`: plan, conduct and synthesize user research studies.
+- `ux-copy`: write or review UX microcopy (CTAs, errors, empty states).
 
 
 ## Rules
