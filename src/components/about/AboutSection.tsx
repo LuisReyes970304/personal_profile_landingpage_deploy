@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { skills } from "@/lib/profile";
+import { backendSkills, frontendSkills } from "@/lib/profile";
+import { SkillsMarquee } from "./SkillsMarquee";
 
 export function AboutSection() {
   const ref = useScrollReveal<HTMLDivElement>({ targets: "[data-reveal]" });
@@ -59,21 +60,13 @@ export function AboutSection() {
                           que sean rápidas, seguras y memorables.
                       </p>
                   </div>
-
-                  <ul
-                      className="mt-12 grid grid-cols-2 border-t border-white/15 sm:grid-cols-3"
-                      aria-label="Habilidades"
-                  >
-                      {skills.map((skill) => (
-                          <li
-                              data-reveal
-                              key={skill}
-                              className="border-b border-white/15 py-4 text-sm text-white/70"
-                          >
-                              {skill}
-                          </li>
-                      ))}
-                  </ul>
+                  <div data-reveal className="mt-12 w-full max-w-150 md:mt-20">
+                    <span className="text-lime">Habilidades</span>
+                    <div className="mt-4 divide-y divide-lime border-y border-lime">
+                        <SkillsMarquee skills={backendSkills} reverse />
+                        <SkillsMarquee skills={frontendSkills} />
+                    </div>
+                  </div>
               </div>
           </div>
       </section>
