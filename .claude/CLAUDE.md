@@ -76,7 +76,6 @@ Project skills in `.claude/skills/`:
 
 ## Conventions
 - All code, comments, and docs must be in English.
-- Only change what is explicitly requested; do not refactor unrelated code.
 - Components: PascalCase file names (`HeroSection.tsx`). Utilities and hooks: camelCase.
 
 ## Before finishing

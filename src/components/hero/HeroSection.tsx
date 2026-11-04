@@ -11,6 +11,9 @@ import { gsap } from "gsap";
 export function HeroSection() {
     const headingRef = useRef<HTMLSpanElement>(null);
     const accentRef = useRef<HTMLSpanElement>(null);
+    const subRef = useRef<HTMLParagraphElement>(null);
+    const ctaRef = useRef<HTMLDivElement>(null);
+    const barRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLElement>(null);
     const glowRef = useRef<HTMLDivElement>(null);
 
@@ -18,14 +21,22 @@ export function HeroSection() {
         const playIntro = () => {
             const heading = headingRef.current;
             const accent = accentRef.current;
-            if (!heading || !accent) return;
+            const sub = subRef.current;
+            const cta = ctaRef.current;
+            const bar = barRef.current;
+            if (!heading || !accent || !sub || !cta || !bar) return;
 
             if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                gsap.set([heading, accent], { xPercent: 0, opacity: 1 });
+                gsap.set([heading, accent, sub, cta, bar], { xPercent: 0, y: 0, opacity: 1 });
                 return;
             }
 
             gsap.timeline()
+                .fromTo(
+                    sub,
+                    { y: 10, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+                )
                 .fromTo(
                     heading,
                     { xPercent: -20, opacity: 0 },
@@ -35,6 +46,7 @@ export function HeroSection() {
                         duration: 1.8,
                         ease: "power3.out",
                     },
+                    "-=0.3",
                 )
                 .fromTo(
                     accent,
@@ -46,6 +58,18 @@ export function HeroSection() {
                         ease: "power3.out",
                     },
                     "<",
+                )
+                .fromTo(
+                    cta,
+                    { y: 16, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
+                    "-=0.6",
+                )
+                .fromTo(
+                    bar,
+                    { y: 12, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+                    "-=0.4",
                 );
         };
 
@@ -96,7 +120,7 @@ export function HeroSection() {
 
                 <div className="grid items-end gap-10 lg:grid-cols-[1fr_0.38fr]">
                     <div>
-                        <p className="mb-5 text-lg text-white/60 md:text-2xl">
+                        <p ref={subRef} className="mb-5 text-lg text-white/60 md:text-2xl">
                             Hola, soy{" "}
                             <span className="text-lime transition-all duration-300 hover:text-white hover:[text-shadow:0_0_10px_var(--color-lime),0_0_20px_var(--color-lime),0_0_40px_var(--color-lime)]">
                                 {profile.firstName}
@@ -116,7 +140,7 @@ export function HeroSection() {
                         </h1>
                     </div>
 
-                    <div className="flex flex-col gap-7 border-l border-white/15 pl-6 lg:mb-2">
+                    <div ref={ctaRef} className="flex flex-col gap-7 border-l border-white/15 pl-6 lg:mb-2">
                         <p className="max-w-sm text-base leading-relaxed text-white/55 md:text-lg">
                             Desarrollo productos web rápidos y memorables donde el
                             diseño, la tecnología, la seguridad y el propósito
@@ -134,7 +158,7 @@ export function HeroSection() {
                     </div>
                 </div>
 
-                <div className="mt-50 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
+                <div ref={barRef} className="mt-50 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.15em] text-white/55">
                     <span>
                         {profile.location}
                     </span>

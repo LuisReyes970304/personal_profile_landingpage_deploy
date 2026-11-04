@@ -29,7 +29,7 @@ export function MobileMenu() {
         <nav
           id="mobile-menu"
           aria-label="Navegación principal"
-          className="absolute inset-x-0 top-20 flex flex-col gap-1 border-b border-white/10 bg-ink/95 px-5 py-6 text-sm text-white/60 backdrop-blur-xl"
+          className="absolute inset-x-0 top-20 flex flex-col gap-1 border-b border-white/10 bg-ink/95 px-5 py-6 text-sm text-white/60 backdrop-blur-xl motion-safe:animate-[menu-in_0.22s_ease-out]"
         >
           <HashLink
             className="border-b border-white/10 py-3 uppercase tracking-wider transition-colors hover:text-lime"

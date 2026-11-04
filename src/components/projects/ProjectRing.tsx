@@ -224,7 +224,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
       role="region"
       aria-roledescription="carrusel"
       aria-label="Proyectos"
-      className="flex min-h-0 flex-1 flex-col outline-none"
+      className="flex min-h-0 flex-1 flex-col outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
       onKeyDown={handleKeyDown}
       onPointerEnter={(event) => event.pointerType === "mouse" && setInteracting(true)}
       onPointerLeave={(event) => event.pointerType === "mouse" && setInteracting(false)}
