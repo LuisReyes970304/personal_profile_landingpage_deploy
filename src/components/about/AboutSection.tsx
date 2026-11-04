@@ -40,7 +40,7 @@ export function AboutSection() {
                   </p>
               </div>
 
-              <div className="flex flex-col justify-between">
+              <div className="flex min-w-0 flex-col justify-between">
                   <div data-reveal>
                       <h2
                           id="sobre-mi-title"
