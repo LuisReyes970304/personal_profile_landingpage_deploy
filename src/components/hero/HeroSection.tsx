@@ -5,6 +5,7 @@ import { HashLink } from "@/components/ui/HashLink";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { LiveTimeClock } from "@/components/ui/LiveTimeClock";
 import { CurrentDate } from "@/components/ui/CurrentDate";
+import { useGlowRef } from "@/hooks/useGlowRef";
 import { profile } from "@/lib/profile";
 import { gsap } from "gsap";
 
@@ -14,8 +15,7 @@ export function HeroSection() {
     const subRef = useRef<HTMLParagraphElement>(null);
     const ctaRef = useRef<HTMLDivElement>(null);
     const barRef = useRef<HTMLDivElement>(null);
-    const sectionRef = useRef<HTMLElement>(null);
-    const glowRef = useRef<HTMLDivElement>(null);
+    const { containerRef, glowRef } = useGlowRef<HTMLElement>();
 
     useEffect(() => {
         const playIntro = () => {
@@ -78,35 +78,9 @@ export function HeroSection() {
         return () => window.removeEventListener("hero-intro:replay", playIntro);
     }, []);
 
-    useEffect(() => {
-        const section = sectionRef.current;
-        const glow = glowRef.current;
-        if (!section || !glow) return;
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-            return;
-
-        const moveX = gsap.quickTo(glow, "x", {
-            duration: 0.5,
-            ease: "power3.out",
-        });
-        const moveY = gsap.quickTo(glow, "y", {
-            duration: 0.5,
-            ease: "power3.out",
-        });
-
-        const handleMouseMove = (event: MouseEvent) => {
-            const rect = section.getBoundingClientRect();
-            moveX(event.clientX - rect.left - rect.width / 2);
-            moveY(event.clientY - rect.top - rect.height / 2);
-        };
-
-        section.addEventListener("mousemove", handleMouseMove);
-        return () => section.removeEventListener("mousemove", handleMouseMove);
-    }, []);
-
     return (
         <section
-            ref={sectionRef}
+            ref={containerRef}
             id="inicio"
             className="relative isolate overflow-hidden"
         >

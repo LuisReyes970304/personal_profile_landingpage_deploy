@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Personal Landing Page
 
 ## Overview
-Personal profile landing page for Luis Reyes, full-stack developer. Section components in `src/components/`, content (profile, projects, skills) in `src/lib/profile.ts`. Copy is in Spanish (`<html lang="es">`). Still a placeholder: the "Hagámosla realidad." CTA in `ContactSection.tsx` links to `href="#"` because there's no contact email yet (`profile.ts` has no email field despite its header comment).
+Personal profile landing page for Luis Reyes, full-stack developer. Section components live in feature folders under `src/components/` (`hero/`, `projects/`, `about/`, ...), content (profile, projects, skills) in `src/lib/profile.ts`. Copy is in Spanish (`<html lang="es">`). `profile.ts` has no email field despite its header comment.
 
 ## Tech Stack
 - Framework: Next.js 16 (App Router) + React 19 + TypeScript (strict)
@@ -37,7 +37,7 @@ All source code is in `src/`; config files stay at the root. `@/*` maps to `./sr
 ```
 src/
 ├── app/                # File-based routing (App Router). Routes only.
-│   ├── layout.tsx      # Root layout: global, persistent UI (navbar, footer). Required.
+│   ├── layout.tsx      # Root layout: fonts, metadata, global UI (progress bar, conditional navbar/footer). Required.
 │   ├── page.tsx        # Content for the current route
 │   ├── loading.tsx     # Loading state for the route segment (create when needed)
 │   ├── error.tsx       # Error boundary for the route segment ('use client', create when needed)
@@ -48,7 +48,9 @@ src/
 └── hooks/              # Reusable custom React hooks (e.g. useScrollReveal.ts)
 ```
 
-- `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. Projects is the only light section (`bg-lime-cream`, with two `ui/GridCorner.tsx` decorations); it renders `ProjectRing.tsx`, which renders a `ProjectCard.tsx` per entry in `projects` (`profile.ts`). A card links to `liveUrl` when set, otherwise `repoUrl`. `Header` and `Footer` come from the root layout, alongside `ui/ScrollProgressBar.tsx` (also rendered in the root layout, fixed above the header).
+- `page.tsx` stacks the sections in order: Hero, Projects, About, Contact. Projects is the only light section (`bg-lime-cream`, with two `ui/GridCorner.tsx` decorations); it renders `ProjectRing.tsx`, which renders a `ProjectCard.tsx` per entry in `projects` (`profile.ts`). A card links to `liveUrl` when set, otherwise `repoUrl`. The root layout renders `ui/ScrollProgressBar.tsx` (fixed above the header) on every route, plus `ConditionalChrome.tsx`, which adds `Header` and `Footer` around the page.
+- `/contact_me` is the only route besides `/`, reached from the "Hagámosla realidad." CTA in `ContactSection.tsx`. `ConditionalChrome.tsx` hides the global `Header` and `Footer` for paths starting with an entry in `HIDDEN_CHROME_PREFIXES`, and `app/contact_me/layout.tsx` supplies its own minimal header instead. A new route without the global chrome needs an entry there. The hash targets only exist on `/`, and `HashLink` only accepts `#...` hrefs, so use `next/link` to get home from this route.
+- `contact/ContactForm.tsx` submits to the `lib/sendContactMessage.ts` Server Action: honeypot check (`website` field), Zod validation, then Resend. It reads `RESEND_API_KEY`, `CONTACT_TO_EMAIL` and optionally `CONTACT_FROM_EMAIL` from `.env.local` (gitignored), and the same variables must be set in the deployment environment.
 - In-page navigation uses hash links (`#inicio`, `#proyectos`, `#sobre-mi`, `#contact`) that must match target `id`s. Three resolve to their own section (`HeroSection.tsx`, `ProjectsSection.tsx`, `AboutSection.tsx`); `#contact` resolves to `id="contact"` on `Footer.tsx` — `ContactSection.tsx` itself has no matching `id`, only an `aria-label`. If you rename or add a section, update the links in `Header.tsx`, `MobileMenu.tsx`, and `HeroSection.tsx`.
 - The header is `fixed`; its own nav is desktop-only (`hidden md:flex`). Below `md`, `Header.tsx` renders `MobileMenu.tsx` (`'use client'`, toggled open/close state), which duplicates the same links and uses `ui/BurgerIcon.tsx` for the toggle icon. Keep both navs in sync when changing links.
 Project skills in `.claude/skills/`:

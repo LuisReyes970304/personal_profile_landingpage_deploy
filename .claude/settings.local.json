@@ -15,7 +15,10 @@
       "Bash(npm run *)",
       "Bash(node /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shot.js http://localhost:3001/ 1280 900 /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shots/lg-card-v2.png '#proyectos')",
       "Bash(node /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shot.js http://localhost:3001/ 390 844 /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shots/mobile-card-v2.png '#proyectos')",
-      "Bash(node /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shot.js http://localhost:3001/ 1280 900 /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shots/lg-card-v3.png '#proyectos')"
+      "Bash(node /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shot.js http://localhost:3001/ 1280 900 /tmp/claude-1003/-home-cohorte5-Escritorio-personal-profile-landingpage-deploy/b9e8c344-b84f-476f-bba6-c14d25e4b630/scratchpad/shots/lg-card-v3.png '#proyectos')",
+      "Bash(git check-ignore *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"for \\(const p of ['resend','zod']\\) console.log\\(p, require\\('./node_modules/'+p+'/package.json'\\).version\\)\")"
     ],
     "deny": [
       "Read(*.env)",
