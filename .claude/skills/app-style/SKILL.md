@@ -15,7 +15,7 @@ Theme tokens are defined in `@theme` in `src/app/globals.css`. Always use them, 
 | `ink` | `#0c0c0c` | Page background, dark sections, text on lime |
 | `cream` | `#f5f4ef` | Default text on dark |
 | `paper` | `#f1f0e9` | Light section background |
-| `lime-cream` | `#eef4d6` | Creamy lime light section background (Projects, with a `ui/GridTunnel` ink grid in one-point perspective from `md` up, and `ui/GridCorner` ink grid lines fading from two corners below that) |
+| `lime-cream` | `#eef4d6` | Creamy lime light section background (Projects below `md`, with `ui/GridCorner` ink grid lines fading from two corners; from `md` up, Projects is `bg-white` with a `ui/GridTunnel` ink grid in one-point perspective) |
 | `coal` | `#111111` | Text on light sections |
 | `lime` | `#c7ff43` | The single accent: highlights, CTAs, hover states |
 

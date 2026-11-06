@@ -8,7 +8,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { projects } from "@/lib/profile";
 
 /** Degrees the ring has to turn to move the tunnel in by one cross-section. */
-const DEGREES_PER_TUNNEL_RING = 45;
+const DEGREES_PER_TUNNEL_RING = 180;
 
 export function ProjectsSection() {
   const ref = useScrollReveal<HTMLDivElement>({ targets: "[data-reveal]" });
@@ -22,7 +22,7 @@ export function ProjectsSection() {
     <section
       id="proyectos"
       aria-labelledby="proyectos-title"
-      className="relative isolate flex min-h-screen flex-col overflow-x-clip bg-lime-cream pb-6 pt-20 text-coal md:h-screen md:pb-10 md:pt-28"
+      className="relative isolate flex min-h-screen flex-col overflow-x-clip bg-lime-cream pb-6 md:bg-white pt-20 text-coal md:h-screen md:pb-10 md:pt-28"
     >
       <GridCorner className="left-0 top-0 h-full w-1/2 -z-10 md:hidden" />
       <GridCorner className="bottom-0 right-0 h-full w-1/2 -z-10 rotate-180 md:hidden" />
@@ -35,7 +35,7 @@ export function ProjectsSection() {
           <div>
             <h2
               id="proyectos-title"
-              className="text-5xl font-semibold tracking-[-0.055em] md:text-7xl"
+              className="w-fit text-5xl font-semibold tracking-[-0.055em] px-6 py-4 bg-cream/80 border border-ink/40 rounded-lg text-balance md:text-7xl backdrop-blur-sm"
             >
               Proyectos con
               <span className="block font-serif font-normal italic">

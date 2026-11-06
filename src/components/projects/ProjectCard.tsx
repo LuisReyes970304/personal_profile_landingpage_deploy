@@ -10,7 +10,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const linkLabel = project.liveUrl ? "Ver sitio" : "Ver repositorio";
 
   return (
-    <article className="relative flex h-full w-[min(82vw,24rem)] flex-col overflow-hidden rounded-4xl border-2 border-ink bg-cream text-coal shadow-2xl shadow-black/15">
+    <article className="relative flex h-full w-[min(82vw,24rem)] flex-col overflow-hidden rounded-4xl border border-ink/40 bg-cream text-coal shadow-2xl shadow-black/15">
       <div className="relative flex h-35 shrink-0 items-end overflow-hidden bg-ink px-6 pb-5">
         <h3 className="text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-lime">
           {project.title}

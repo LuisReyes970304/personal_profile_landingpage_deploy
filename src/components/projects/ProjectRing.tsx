@@ -18,7 +18,7 @@ const CARD_GAP = 40;
 
 type ProjectRingProps = {
   projects: Project[];
-  /** Called as the ring turns, with the degrees turned since the last call in either direction. */
+  /** Called as the ring turns, with the signed degrees turned since the last call. */
   onRotate?: (degrees: number) => void;
 };
 
@@ -86,7 +86,7 @@ export function ProjectRing({ projects, onRotate }: ProjectRingProps) {
     const index = ((Math.round(rotation.current.value / step) % count) + count) % count;
     setActive(index);
 
-    const turned = Math.abs(rotation.current.value - lastRenderedRotation.current);
+    const turned = rotation.current.value - lastRenderedRotation.current;
     lastRenderedRotation.current = rotation.current.value;
     if (turned) onRotate?.(turned);
   }, [count, onRotate, step]);

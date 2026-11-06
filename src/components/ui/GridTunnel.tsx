@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useImperativeHandle, useRef } from "react";
 import type { Ref } from "react";
+import { gsap } from "gsap";
 
 /** Cross-sections drawn between the viewer and the back wall. */
 const RING_COUNT = 16;
-/** Depth between two cross-sections. With RING_COUNT, it sets the back wall's size. */
+/** Depth between two cross-sections. With RING_COUNT, it sets where the grid ends. */
 const DEPTH_STEP = 0.25;
 /** Approximate cell size, in pixels, at the tunnel's outer edge. */
 const CELL_SIZE = 110;
@@ -17,6 +18,8 @@ const RING_OPACITY_NEAR = 0.28;
 const RING_OPACITY_FAR = 0.6;
 const LENGTHWISE_OPACITY = 0.32;
 const DOT_OPACITY = 0.5;
+/** Seconds the grid takes to ease into a new position, which softens sudden moves. */
+const EASE_DURATION = 1.6;
 
 const BACK_SCALE = 1 / (1 + RING_COUNT * DEPTH_STEP);
 
@@ -26,7 +29,7 @@ function divisions(size: number) {
 }
 
 export type GridTunnelHandle = {
-  /** Moves the grid inward by a number of cross-sections. */
+  /** Moves the grid by a number of cross-sections: inward if positive, outward if negative. */
   advance: (rings: number) => void;
 };
 
@@ -36,15 +39,16 @@ type GridTunnelProps = {
 };
 
 /**
- * Decorative ink grid in one-point perspective with a soft shade at its center.
- * Every point is mirrored around the center, so all four walls stay symmetric.
+ * Decorative ink grid in one-point perspective with a soft shade at its center,
+ * where the grid fades out instead of ending in a back wall. Every point is mirrored around the center, so all four walls stay symmetric.
  * It only moves when `advance` is called through the ref.
  * Size and position come entirely from `className`.
  */
 export function GridTunnel({ className = "", ref }: GridTunnelProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  // Fraction of the way from one cross-section to the next, in [0, 1).
-  const offset = useRef(0);
+  // Distance traveled, in cross-sections: where the grid is heading, and where it is now.
+  const targetOffset = useRef(0);
+  const offset = useRef({ value: 0 });
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -59,6 +63,8 @@ export function GridTunnel({ className = "", ref }: GridTunnelProps) {
     const columns = divisions(width);
     const rows = divisions(height);
     const color = getComputedStyle(canvas).color;
+    // Fraction of the way from one cross-section to the next, in [0, 1).
+    const phase = ((offset.current.value % 1) + 1) % 1;
 
     context.setTransform(canvas.width / width, 0, 0, canvas.height / height, 0, 0);
     context.clearRect(0, 0, width, height);
@@ -67,7 +73,7 @@ export function GridTunnel({ className = "", ref }: GridTunnelProps) {
     context.fillStyle = color;
     context.lineWidth = 1;
 
-    // Lines running from the outer edge to the back wall, and the back wall's grid.
+    // Lines running from the outer edge toward the center.
     context.globalAlpha = LENGTHWISE_OPACITY;
     context.beginPath();
     for (let i = 0; i <= columns; i++) {
@@ -76,8 +82,6 @@ export function GridTunnel({ className = "", ref }: GridTunnelProps) {
         context.moveTo(x, side * halfHeight);
         context.lineTo(x * BACK_SCALE, side * halfHeight * BACK_SCALE);
       }
-      context.moveTo(x * BACK_SCALE, -halfHeight * BACK_SCALE);
-      context.lineTo(x * BACK_SCALE, halfHeight * BACK_SCALE);
     }
     for (let j = 0; j <= rows; j++) {
       const y = (-1 + (2 * j) / rows) * halfHeight;
@@ -85,13 +89,11 @@ export function GridTunnel({ className = "", ref }: GridTunnelProps) {
         context.moveTo(side * halfWidth, y);
         context.lineTo(side * halfWidth * BACK_SCALE, y * BACK_SCALE);
       }
-      context.moveTo(-halfWidth * BACK_SCALE, y * BACK_SCALE);
-      context.lineTo(halfWidth * BACK_SCALE, y * BACK_SCALE);
     }
     context.stroke();
 
     for (let ring = 0; ring < RING_COUNT; ring++) {
-      const scale = 1 / (1 + (ring + offset.current) * DEPTH_STEP);
+      const scale = 1 / (1 + (ring + phase) * DEPTH_STEP);
       const ringX = halfWidth * scale;
       const ringY = halfHeight * scale;
       const depth = (1 - scale) / (1 - BACK_SCALE);
@@ -129,8 +131,14 @@ export function GridTunnel({ className = "", ref }: GridTunnelProps) {
     () => ({
       advance(rings) {
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        offset.current = (offset.current + rings) % 1;
-        draw();
+        targetOffset.current += rings;
+        gsap.to(offset.current, {
+          value: targetOffset.current,
+          duration: EASE_DURATION,
+          ease: "power2.out",
+          overwrite: true,
+          onUpdate: draw,
+        });
       },
     }),
     [draw],
@@ -149,10 +157,18 @@ export function GridTunnel({ className = "", ref }: GridTunnelProps) {
     return () => observer.disconnect();
   }, [draw]);
 
+  useEffect(() => {
+    const position = offset.current;
+    return () => void gsap.killTweensOf(position);
+  }, []);
+
   return (
     <div aria-hidden="true" className={`pointer-events-none absolute ${className}`}>
       <div className="absolute inset-0 bg-ink/45 mask-[radial-gradient(ellipse_50%_50%_at_center,black_10%,transparent_100%)]" />
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full text-ink" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 h-full w-full text-ink mask-[radial-gradient(ellipse_50%_50%_at_center,transparent_20%,black_70%)]"
+      />
     </div>
   );
 }
