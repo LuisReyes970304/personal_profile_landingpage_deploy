@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Manrope } from "next/font/google";
-import { Footer } from "@/components/footer/Footer";
-import { Header } from "@/components/header/Header";
+import { ConditionalChrome } from "@/components/ConditionalChrome";
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { profile } from "@/lib/profile";
 import "./globals.css";
@@ -37,9 +36,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen overflow-x-hidden bg-ink font-sans text-cream">
         <ScrollProgressBar />
-        <Header />
-        {children}
-        <Footer />
+        <ConditionalChrome>{children}</ConditionalChrome>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import Link from "next/link";
 
 export function ContactSection() {
   const ref = useScrollReveal<HTMLDivElement>({ targets: "[data-reveal]" });
@@ -13,9 +14,9 @@ export function ContactSection() {
           <p data-reveal className="mb-6 text-sm text-white/55">
             ¿Tienes una idea en mente?
           </p>
-          <a
+          <Link
             data-reveal
-            href="#"
+            href={"/contact_me"}
             className="group flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"
           >
             <span className="text-[clamp(2.8rem,7vw,6.5rem)] font-semibold leading-none tracking-[-0.06em] transition-colors group-hover:text-lime">
@@ -24,7 +25,7 @@ export function ContactSection() {
             <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-lime text-ink transition-transform group-hover:rotate-45 sm:h-20 sm:w-20">
               <ArrowIcon diagonal />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
