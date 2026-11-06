@@ -18,13 +18,15 @@ const CARD_GAP = 40;
 
 type ProjectRingProps = {
   projects: Project[];
+  /** Called as the ring turns, with the degrees turned since the last call in either direction. */
+  onRotate?: (degrees: number) => void;
 };
 
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-export function ProjectRing({ projects }: ProjectRingProps) {
+export function ProjectRing({ projects, onRotate }: ProjectRingProps) {
   const count = projects.length;
   const step = 360 / count;
 
@@ -34,6 +36,7 @@ export function ProjectRing({ projects }: ProjectRingProps) {
   // Ring angle in degrees. It only grows or shrinks, never wraps back, so the
   // ring keeps turning the same way past the last project.
   const rotation = useRef({ value: 0 });
+  const lastRenderedRotation = useRef(0);
   const target = useRef(0);
   const autoplay = useRef<gsap.core.Tween | null>(null);
   const drag = useRef<{
@@ -82,7 +85,11 @@ export function ProjectRing({ projects }: ProjectRingProps) {
 
     const index = ((Math.round(rotation.current.value / step) % count) + count) % count;
     setActive(index);
-  }, [count, step]);
+
+    const turned = Math.abs(rotation.current.value - lastRenderedRotation.current);
+    lastRenderedRotation.current = rotation.current.value;
+    if (turned) onRotate?.(turned);
+  }, [count, onRotate, step]);
 
   // Gives every card the tallest card's height, then scales them all to fit the stage.
   const measure = useCallback(() => {
